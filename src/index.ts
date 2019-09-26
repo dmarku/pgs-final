@@ -5,7 +5,7 @@ import { Vector3 } from "@babylonjs/core/Maths/math";
 import { Scene } from "@babylonjs/core/scene";
 import "@babylonjs/loaders/glTF";
 
-const canvas = document.getElementById("renderCanvas");
+const canvas = document.getElementById("renderCanvas") as HTMLCanvasElement;
 
 const engine = new Engine(canvas);
 
