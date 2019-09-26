@@ -2,18 +2,20 @@
   "name": "pgs-final",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup index.js --config --file bundle.js --format iife",
-    "watch": "rollup index.js --config --watch --file bundle.js --format iife"
+    "build": "rollup --config",
+    "watch": "rollup --watch --config"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babylonjs/core": "^4.0.3",
     "@babylonjs/loaders": "^4.0.3",
-    "rollup": "^1.21.4"
+    "rollup": "^1.21.4",
+    "rollup-plugin-typescript": "^1.0.1",
+    "tslib": "^1.10.0",
+    "typescript": "^3.6.3"
   },
   "dependencies": {
     "rollup-plugin-node-resolve": "^5.2.0"
