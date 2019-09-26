@@ -25,7 +25,7 @@ cam.attachControl(canvas, true);
 
 const particles = new GPUParticleSystem("snow_v1", { capacity: 1000 }, scene);
 particles.particleTexture = new Texture("/snowflake.png", scene);
-particles.blendMode = GPUParticleSystem.BLENDMODE_STANDARD;
+particles.blendMode = GPUParticleSystem.BLENDMODE_ADD;
 
 // place a 20x20 units emitter plane parallel to the ground at a height of
 // 10 units
