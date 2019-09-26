@@ -27,11 +27,12 @@ const particles = new GPUParticleSystem("snow_v1", { capacity: 1000 }, scene);
 particles.particleTexture = new Texture("/snowflake.png", scene);
 particles.blendMode = GPUParticleSystem.BLENDMODE_ADD;
 
+const areaHeight = 12;
 const areaSize = 18;
 
 // place a 20x20 units emitter plane parallel to the ground at a height of
 // 10 units
-particles.emitter = Vector3.Up().scaleInPlace(20);
+particles.emitter = Vector3.Up().scaleInPlace(areaHeight);
 particles.minEmitBox = new Vector3(-0.5 * areaSize, 0, -0.5 * areaSize);
 particles.maxEmitBox = new Vector3(0.5 * areaSize, 0, 0.5 * areaSize);
 
@@ -67,8 +68,8 @@ particles.minEmitPower = 1;
 particles.maxEmitPower = 3;
 
 // lifetime is in seconds
-particles.maxLifeTime = 10;
-particles.minLifeTime = 10;
+particles.maxLifeTime = 6;
+particles.minLifeTime = 6;
 
 particles.start();
 engine.runRenderLoop(() => scene.render());
