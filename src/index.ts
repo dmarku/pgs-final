@@ -24,6 +24,8 @@ cam.setTarget(new Vector3(0, 2, 0));
 cam.attachControl(canvas, true);
 
 const particles = new GPUParticleSystem("snow_v1", { capacity: 1000 }, scene);
+particles.particleTexture = new Texture("/snowflake.png", scene);
+particles.blendMode = GPUParticleSystem.BLENDMODE_STANDARD;
 
 // place a 20x20 units emitter plane parallel to the ground at a height of
 // 10 units
@@ -31,7 +33,7 @@ particles.emitter = Vector3.Up().scaleInPlace(10);
 particles.minEmitBox = new Vector3(-10, 0, -10);
 particles.maxEmitBox = new Vector3(10, 0, 10);
 
-particles.particleTexture = new Texture("/snowflake.png", scene);
+// emit particles straight down, leave no place for random direction
 
 particles.minEmitPower = 1;
 particles.maxEmitPower = 3;
