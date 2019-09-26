@@ -20,7 +20,7 @@ SceneLoader.LoadAssetContainer("/", "test-scene.glb", scene, assets => {
 // Explicitly set one up until the export is fixed (or not).
 //const cam = new FreeCamera("test cam", new Vector3(20, 20, 14), scene);
 const cam = new ArcRotateCamera("name", 2, 0.7, 30, Vector3.Zero(), scene);
-cam.setTarget(Vector3.Zero());
+cam.setTarget(new Vector3(0, 2, 0));
 cam.attachControl(canvas, true);
 
 const particles = new GPUParticleSystem("snow_v1", { capacity: 1000 }, scene);
