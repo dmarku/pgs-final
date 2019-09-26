@@ -2,7 +2,7 @@ import { GPUParticleSystem, Texture } from "@babylonjs/core";
 import { ArcRotateCamera } from "@babylonjs/core/Cameras/arcRotateCamera";
 import { Engine } from "@babylonjs/core/Engines/engine";
 import { SceneLoader } from "@babylonjs/core/Loading/sceneLoader";
-import { Vector3 } from "@babylonjs/core/Maths/math";
+import { Color4, Vector3 } from "@babylonjs/core/Maths/math";
 import { Scene } from "@babylonjs/core/scene";
 import "@babylonjs/loaders/glTF";
 
@@ -41,10 +41,11 @@ particles.direction2 = Vector3.Down();
 // (min|max)Scale(X|Y) is for individual variation in both directions
 //particles.minSize = 0.1;
 //particles.maxSize = 0.3;
-particles.minScaleX = 0.15;
-particles.maxScaleX = 0.25;
-particles.minScaleY = 0.15;
-particles.maxScaleY = 0.25;
+// slowly fade in from the top
+particles.addColorGradient(0, new Color4(1, 1, 1, 0));
+particles.addColorGradient(0.3, new Color4(1, 1, 1, 1));
+particles.addColorGradient(0.95, new Color4(1, 1, 1, 1));
+particles.addColorGradient(0.95, new Color4(1, 1, 1, 0));
 
 particles.minEmitPower = 1;
 particles.maxEmitPower = 3;
