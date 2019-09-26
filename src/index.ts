@@ -33,7 +33,9 @@ particles.particleTexture = new Texture("/snowflake.png", scene);
 
 particles.minEmitPower = 1;
 particles.maxEmitPower = 3;
-particles.updateSpeed = 0.005;
+
+particles.maxLifeTime = 6;
+particles.minLifeTime = 6;
 
 particles.start();
 engine.runRenderLoop(() => scene.render());
