@@ -34,6 +34,8 @@ particles.minEmitBox = new Vector3(-10, 0, -10);
 particles.maxEmitBox = new Vector3(10, 0, 10);
 
 // emit particles straight down, leave no place for random direction
+particles.direction1 = Vector3.Down();
+particles.direction2 = Vector3.Down();
 
 particles.minEmitPower = 1;
 particles.maxEmitPower = 3;
