@@ -40,6 +40,9 @@ particles.maxEmitBox = new Vector3(0.5 * areaSize, 0, 0.5 * areaSize);
 particles.direction1 = Vector3.Down();
 particles.direction2 = Vector3.Down();
 
+particles.minAngularSpeed = -Math.PI;
+particles.maxAngularSpeed = Math.PI;
+
 // scaling: minSize/maxSize is for equal variance in both directions
 // (min|max)Scale(X|Y) is for individual variation in both directions
 
