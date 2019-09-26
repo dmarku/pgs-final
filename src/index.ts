@@ -37,9 +37,19 @@ particles.maxEmitBox = new Vector3(10, 0, 10);
 particles.direction1 = Vector3.Down();
 particles.direction2 = Vector3.Down();
 
+// scaling: minSize/maxSize is for equal variance in both directions
+// (min|max)Scale(X|Y) is for individual variation in both directions
+//particles.minSize = 0.1;
+//particles.maxSize = 0.3;
+particles.minScaleX = 0.15;
+particles.maxScaleX = 0.25;
+particles.minScaleY = 0.15;
+particles.maxScaleY = 0.25;
+
 particles.minEmitPower = 1;
 particles.maxEmitPower = 3;
 
+// lifetime is in seconds
 particles.maxLifeTime = 6;
 particles.minLifeTime = 6;
 
