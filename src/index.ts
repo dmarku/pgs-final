@@ -41,8 +41,22 @@ particles.direction2 = Vector3.Down();
 
 // scaling: minSize/maxSize is for equal variance in both directions
 // (min|max)Scale(X|Y) is for individual variation in both directions
+
+const averageSize = 0.2;
+const sizeVariance = 0.05;
+
+const minSize = averageSize - sizeVariance;
+const maxSize = averageSize - sizeVariance;
+
+// slightly vary size around the 0.2 mark
+// values are scaling factors relative to the original texture size?
 //particles.minSize = 0.1;
 //particles.maxSize = 0.3;
+particles.minScaleX = minSize;
+particles.maxScaleX = maxSize;
+particles.minScaleY = minSize;
+particles.maxScaleY = maxSize;
+
 // slowly fade in from the top
 particles.addColorGradient(0, new Color4(1, 1, 1, 0));
 particles.addColorGradient(0.3, new Color4(1, 1, 1, 1));
