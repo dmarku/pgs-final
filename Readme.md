@@ -17,4 +17,6 @@ npm install
 npm run build
 ```
 
-This creates a _bundle.js_ file. You can then serve the project directory with a HTTP server. Load the index.html in a browser. You should see a fullscreen 3D scene. Use the mouse to pan around the scene, scroll to zoom in and out.
+~~This creates a _bundle.js_ file. You can then serve the project directory with a HTTP server. Load the index.html in a browser. You should see a fullscreen 3D scene. Use the mouse to pan around the scene, scroll to zoom in and out.~~
+
+This starts a live server on <http://localhost:10001> that reloads on source code changes.

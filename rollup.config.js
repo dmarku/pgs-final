@@ -1,4 +1,6 @@
+import livereload from "rollup-plugin-livereload";
 import resolve from "rollup-plugin-node-resolve";
+import serve from "rollup-plugin-serve";
 import typescript from "rollup-plugin-typescript";
 
 export default {
@@ -7,5 +9,5 @@ export default {
     file: "bundle.js",
     format: "esm"
   },
-  plugins: [typescript(), resolve()]
+  plugins: [typescript(), resolve(), serve(), livereload()]
 };
