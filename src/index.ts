@@ -1,8 +1,9 @@
-import { GPUParticleSystem, Texture } from "@babylonjs/core";
 import { ArcRotateCamera } from "@babylonjs/core/Cameras/arcRotateCamera";
 import { Engine } from "@babylonjs/core/Engines/engine";
 import { SceneLoader } from "@babylonjs/core/Loading/sceneLoader";
+import { Texture } from "@babylonjs/core/Materials/Textures/texture";
 import { Color4, Vector3 } from "@babylonjs/core/Maths/math";
+import { ParticleSystem } from "@babylonjs/core/Particles/particleSystem";
 import { Scene } from "@babylonjs/core/scene";
 import "@babylonjs/loaders/glTF";
 
@@ -23,9 +24,9 @@ const cam = new ArcRotateCamera("name", 2, 0.7, 30, Vector3.Zero(), scene);
 cam.setTarget(new Vector3(0, 2, 0));
 cam.attachControl(canvas, true);
 
-const particles = new GPUParticleSystem("snow_v1", { capacity: 1000 }, scene);
+const particles = new ParticleSystem("snow_v1", 1000, scene);
 particles.particleTexture = new Texture("/snowflake.png", scene);
-particles.blendMode = GPUParticleSystem.BLENDMODE_ADD;
+particles.blendMode = ParticleSystem.BLENDMODE_ADD;
 
 const areaHeight = 12;
 const areaSize = 18;
@@ -73,6 +74,19 @@ particles.maxEmitPower = 3;
 // lifetime is in seconds
 particles.maxLifeTime = 6;
 particles.minLifeTime = 6;
+
+let windVelocity = Vector3.Right().scaleInPlace(0.3);
+
+const update = particles.updateFunction;
+particles.updateFunction = function(ps) {
+  const windDisplacement = windVelocity.scale(this._scaledUpdateSpeed);
+  update(ps);
+  for (const particle of ps) {
+    particle.direction.addInPlace(windDisplacement);
+  }
+};
+
+window.addEventListener("resize", () => engine.resize());
 
 particles.start();
 engine.runRenderLoop(() => scene.render());
