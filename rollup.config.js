@@ -1,13 +1,27 @@
-import livereload from "rollup-plugin-livereload";
 import resolve from "rollup-plugin-node-resolve";
-import serve from "rollup-plugin-serve";
 import typescript from "rollup-plugin-typescript";
 
-export default {
+const config = {
   input: "src/index.ts",
   output: {
-    file: "bundle.js",
+    file: "dist/bundle.js",
     format: "esm"
   },
-  plugins: [typescript(), resolve(), serve(), livereload()]
+  plugins: [typescript(), resolve()]
+};
+
+export default async args => {
+  if (!args.watch) {
+    return config;
+  }
+
+  const [livereload, serve] = await Promise.all([
+    import("rollup-plugin-livereload"),
+    import("rollup-plugin-serve")
+  ]);
+
+  return {
+    ...config,
+    plugins: [...config.plugins, livereload.default(), serve.default()]
+  };
 };
