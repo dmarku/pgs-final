@@ -6,6 +6,7 @@ import { Color4, Vector3 } from "@babylonjs/core/Maths/math";
 import { ParticleSystem } from "@babylonjs/core/Particles/particleSystem";
 import { Scene } from "@babylonjs/core/scene";
 import "@babylonjs/loaders/glTF";
+import { NoiseProceduralTexture } from "@babylonjs/core/Materials/Textures/Procedurals/noiseProceduralTexture";
 
 const canvas = document.getElementById("renderCanvas") as HTMLCanvasElement;
 
@@ -77,7 +78,18 @@ particles.minLifeTime = 6;
 
 let windVelocity = Vector3.Right().scaleInPlace(0.3);
 
+const noiseTexture = new NoiseProceduralTexture("perlin", 256, scene);
+noiseTexture.animationSpeedFactor = 5;
+noiseTexture.persistence = 2;
+noiseTexture.brightness = 0.5;
+noiseTexture.octaves = 2;
+
+particles.noiseTexture = noiseTexture;
+particles.noiseStrength = new Vector3(0.5, 0, 0.5);
+
+// store and call default update function from customized update
 const update = particles.updateFunction;
+
 particles.updateFunction = function(ps) {
   const windDisplacement = windVelocity.scale(this._scaledUpdateSpeed);
   update(ps);
